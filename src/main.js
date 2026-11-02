@@ -40,6 +40,11 @@ const hammerSearch = document.querySelector(".hammerSearch");
 let hammerSearchValue = 0;
 const resetSearchButton = document.getElementById("resetSearch");
 let isFiltering = false;
+  /*Price*/
+const priceSearch = document.getElementById("priceRange");
+let priceRangeValue = 0;
+const resetPriceButton = document.getElementById("priceRange");
+let isPriceRange = false;
 
 let bottomTriggerCount = 0;
 
@@ -74,6 +79,38 @@ function SearchHammerByIndex(index) {
   for (let i = 1; i < hammerNames.length; i++) {
     hammerElems[i].style.display = "none";
   }
+}
+
+let SHP_number = 1;
+let SHP_triggered = false;
+function SearchHammerByPrice(priceRange) {
+  SHP_number = 1;
+  for (let i = 1; i < hammerNames.length; i++) {
+    if (SHP_number > 40000) {
+      return;
+    }
+
+    SHP_triggered = false;
+
+    while (SHP_triggered != true) {
+      const price = FindHammerByNumber(SHP_number);
+
+      if (price < (parseInt(priceRange) + 100) && price >= priceRange) {
+        hammerNames[i].textContent = `Marteau : ${SHP_number}`;
+        hammerPrices[i].textContent = `Prix : ${price} $`;
+        hammerButtons[i].textContent = `Ajouter au panier`;
+
+        SHP_triggered = true;
+      }
+      SHP_number++;
+      
+    }
+  }
+}
+
+function FindHammerByNumber(number) {
+  const price = Math.round(generator.GetRandom(number) / ((number % 16) + 1));
+  return price;
 }
 
 function ShowAllHammers() {
@@ -224,6 +261,7 @@ window.addEventListener("scroll", () => {
 });
 
  /*Filters*/
+  /*Search*/
 hammerSearch.addEventListener("input", () => {
   hammerSearchValue = hammerSearch.value;
 
@@ -243,5 +281,28 @@ resetSearchButton.addEventListener("click", () => {
   hammerSearchValue = 0;
 
   isFiltering = false;
+  ShowAllHammers();
+});
+
+  /*Price*/
+priceSearch.addEventListener("input", () => {
+  priceRangeValue = priceSearch.value;
+
+  if (priceRangeValue == 0) {
+    ShowAllHammers();
+  } else {
+    isPriceRange = true;
+
+    SearchHammerByPrice(priceRangeValue);
+  }
+
+  console.log(priceRangeValue);
+});
+
+resetPriceButton.addEventListener("click", () => {
+  priceSearch.value = 0;
+  priceRangeValue = 0;
+
+  isPriceRange = false;
   ShowAllHammers();
 });

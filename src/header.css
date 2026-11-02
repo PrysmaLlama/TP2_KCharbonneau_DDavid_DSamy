@@ -1,0 +1,40 @@
+header {
+    position: fixed;
+    
+    background-color: rgb(146, 128, 101);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 100px;
+
+    z-index: 100;
+}
+
+.logo {
+    max-width: 10%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    object-fit: cover;
+
+    padding: 10px;
+
+    background-color: orange;
+}
+
+img {
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+
+}
+
+li {
+    margin: 20px;
+}

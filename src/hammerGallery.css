@@ -1,0 +1,167 @@
+.galleryTitle {
+    width: 100%;
+
+    display: flex;
+    justify-content: start;
+}
+
+.filter {
+    width: 100%;
+
+    display: flex;
+    justify-content: start;
+
+    margin-left: 5%;
+}
+
+.filter h2 {
+    margin-bottom: 3%;
+}
+
+.search {
+    margin-left: 5%;
+}
+
+.gallery {
+    position: relative;
+    width:85%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.galleryTopTrigger {
+    position: absolute;
+    z-index: 100;
+    /* top: 50%; */
+    width: 90%;
+    height: 10px;
+    background-color: rgb(60, 68, 68);
+}
+.galleryBottomTrigger {
+    position: absolute;
+    z-index: 100;
+    /* bottom: 35%; */
+    width: 90%;
+    height: 10px;
+    background-color: rgb(11, 109, 109);
+}
+
+.galleryContainer {
+    width: 100%;
+    padding-top: 5%;
+    margin-top: 0;
+
+    display: grid;
+    /* grid-template-columns: repeat(4, .25fr); */
+    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+    row-gap: 100px;
+    justify-items: center;
+}
+
+.hammerElem {
+    width: 100%;
+    min-width: 300px;
+    max-width: 17.5vw;
+    aspect-ratio: 1 / 1.15;
+
+    background-color: rgb(197, 141, 89);
+
+    padding: 3% 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/*Image display*/
+
+.displayContainer {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 1 / 1;
+
+    background-color: rgb(138, 74, 45);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.descriptionContainer {
+    width: 90%;
+    padding: 0.5rem 0;
+    text-align: center;
+    
+    /* background-color: rgb(119, 70, 47); */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 10px;
+
+    padding: 0 5%;
+    padding-bottom: 2%;
+}
+
+.displayHolder {
+    width: 50%;
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top {
+    width: 66%;
+    aspect-ratio: 1 / 0.25;
+
+    background-color: rgb(118, 118, 223);
+}
+
+.middle {
+    width: 20%;
+    aspect-ratio: 1 / 5;
+
+    background-color: rgb(91, 91, 150);
+}
+
+.bottom {
+    width: 20%;
+    aspect-ratio: 1 / .6;
+
+    background-color: rgb(63, 63, 133);
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hammerName {
+    font-size: 1.2rem;
+}
+
+.hammerPrice {
+    font-size: 1.2rem;
+}
+
+.hammerButton {
+    width: 50%;
+    height: fit-content;
+    background-color: bisque;
+    border-radius: 10px;
+
+    padding: 4% 2%;
+    /* margin-top: 5%; */
+
+    /* margin-bottom: 3%; */
+}

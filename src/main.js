@@ -37,13 +37,15 @@ const scroller = document.querySelector(".scroller");
   /*Filter*/
     /*Search*/
 const hammerSearch = document.querySelector(".hammerSearch");
+const hammerSearchName = document.getElementById("hammerSearchName");
 let hammerSearchValue = 0;
 const resetSearchButton = document.getElementById("resetSearch");
 let isFiltering = false;
   /*Price*/
 const priceSearch = document.getElementById("priceRange");
+const priceRangeName = document.getElementById("priceRangeName");
 let priceRangeValue = 0;
-const resetPriceButton = document.getElementById("priceRange");
+const resetPriceButton = document.getElementById("resetPriceRange");
 let isPriceRange = false;
 
 let bottomTriggerCount = 0;
@@ -168,6 +170,29 @@ function UpdateHammerDisplay(count) {
   }
 }
 
+function DisableOtherFilter(index) {
+  if (index == 0) {
+    priceSearch.value = 0;
+    priceRangeValue = 0;
+
+    priceRangeName.textContent = "Price : ";
+    isPriceRange = false;
+
+    UpdateHammerInfo(bottomTriggerCount);
+    UpdateHammerDisplay(bottomTriggerCount);
+
+    ShowAllHammers();
+  } 
+  else if (index == 1) {
+    hammerSearch.value = 0;
+    hammerSearchValue = 0;
+
+    hammerSearchName.textContent = "Search : ";
+    isFiltering = false;
+    ShowAllHammers();
+  }
+}
+
 UpdateHammerInfo(bottomTriggerCount);
 UpdateHammerDisplay(bottomTriggerCount);
 
@@ -253,10 +278,14 @@ const Timer = setInterval(() => {
   eventTimer += delta;
 }, eventTimerInt);
 
+  /*Scroll*/
 window.addEventListener("scroll", () => {
-  if (!isFiltering && HandleGallery()) {
+  if ((!isFiltering || !isPriceRange) && HandleGallery()) {
     UpdateHammerInfo(bottomTriggerCount);
     UpdateHammerDisplay(bottomTriggerCount);
+  }
+  else if (isPriceRange) {
+
   }
 });
 
@@ -269,6 +298,9 @@ hammerSearch.addEventListener("input", () => {
     ShowAllHammers();
   } else {
     isFiltering = true;
+    hammerSearchName.textContent = "Search : ACTIVE";
+
+    // DisableOtherFilter(0);
 
     SearchHammerByIndex(hammerSearchValue);
   }
@@ -280,6 +312,7 @@ resetSearchButton.addEventListener("click", () => {
   hammerSearch.value = 0;
   hammerSearchValue = 0;
 
+  hammerSearchName.textContent = "Search : ";
   isFiltering = false;
   ShowAllHammers();
 });
@@ -292,8 +325,11 @@ priceSearch.addEventListener("input", () => {
     ShowAllHammers();
   } else {
     isPriceRange = true;
+    priceRangeName.textContent = "Price : ACTIVE";
 
-    SearchHammerByPrice(priceRangeValue);
+    // DisableOtherFilter(1);
+
+    // SearchHammerByPrice(priceRangeValue);
   }
 
   console.log(priceRangeValue);
@@ -304,5 +340,10 @@ resetPriceButton.addEventListener("click", () => {
   priceRangeValue = 0;
 
   isPriceRange = false;
+  priceRangeName.textContent = "Price : ";
+
+  UpdateHammerInfo(bottomTriggerCount);
+  UpdateHammerDisplay(bottomTriggerCount);
+
   ShowAllHammers();
 });

@@ -1,27 +1,37 @@
+.pageProduit {
+    padding-top: 10%;
+    background-color: blanchedalmond;
+    
+}
+
+.sectionProduit{
+  background-color: rgb(119, 105, 84);
+}
+
 /* Parametres pour l'image de jeu */
 
 .imgProduit { 
-  width: 40%;
-  
+  width: 50%;
+  padding-left: 10%;
   border-radius: 20px;
-  translate: 10px 100px;
 }
+
+/* Parametres pour l'information du produit */
 
 .infoProduit {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 25px;
-  background-color: rgba(0, 0, 0, 0.61);
-  border-radius: 20px;
-  padding: 50px;
-
+  flex-direction: row-reverse;
+  align-items: center;
 }
 
 .detailProduit {
-  color: rgb(57, 201, 201);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: rgba(197, 184, 160, 0.61);
+  border-radius: 20px;
+  padding: 10%;
   font-size: 1.5rem;
 }
-
 
 

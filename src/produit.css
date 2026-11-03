@@ -34,4 +34,29 @@
   font-size: 1.5rem;
 }
 
+#titreSimilaire {
+  position: relative;
+  padding-left: 43%;
+}
 
+.flexSimilaire {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    padding-top: 10%;
+}
+
+
+
+
+.imgSimilaire {
+  width: 10%;
+}
+
+
+#spacer {
+  padding-top: 10%;
+}

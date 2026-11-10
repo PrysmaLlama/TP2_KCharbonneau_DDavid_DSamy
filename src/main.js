@@ -85,8 +85,14 @@ function SearchHammerByIndex(index) {
 
 let SHP_number = 1;
 let SHP_triggered = false;
+let validNumbers = [];
 function SearchHammerByPrice(priceRange) {
-  SHP_number = 1;
+  if (validNumbers.length <= 4) {
+    SHP_number = 1;
+  } else {
+    SHP_number = validNumbers[ (validNumbers.length - (11)) ];
+  }
+
   for (let i = 1; i < hammerNames.length; i++) {
     if (SHP_number > 40000) {
       return;
@@ -103,6 +109,7 @@ function SearchHammerByPrice(priceRange) {
         hammerButtons[i].textContent = `Ajouter au panier`;
 
         SHP_triggered = true;
+        validNumbers.push(SHP_number);
       }
       SHP_number++;
       
@@ -172,24 +179,10 @@ function UpdateHammerDisplay(count) {
 
 function DisableOtherFilter(index) {
   if (index == 0) {
-    priceSearch.value = 0;
-    priceRangeValue = 0;
-
-    priceRangeName.textContent = "Price : ";
-    isPriceRange = false;
-
-    UpdateHammerInfo(bottomTriggerCount);
-    UpdateHammerDisplay(bottomTriggerCount);
-
-    ShowAllHammers();
+    resetPriceButton.click();
   } 
   else if (index == 1) {
-    hammerSearch.value = 0;
-    hammerSearchValue = 0;
-
-    hammerSearchName.textContent = "Search : ";
-    isFiltering = false;
-    ShowAllHammers();
+    resetSearchButton.click();
   }
 }
 
@@ -247,7 +240,7 @@ function HandleGallery() {
     bottomTriggerCount++;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
 
-    console.log(`BOTTOM - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
+    //console.log(`BOTTOM - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
 
     return true;
   }
@@ -255,7 +248,7 @@ function HandleGallery() {
     bottomTriggerCount--;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
 
-    console.log(`TOP - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
+    //console.log(`TOP - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
 
     return true;
   }
@@ -280,12 +273,16 @@ const Timer = setInterval(() => {
 
   /*Scroll*/
 window.addEventListener("scroll", () => {
-  if ((!isFiltering || !isPriceRange) && HandleGallery()) {
-    UpdateHammerInfo(bottomTriggerCount);
-    UpdateHammerDisplay(bottomTriggerCount);
+  if (!isFiltering && !isPriceRange) {
+    if (HandleGallery()) {
+      UpdateHammerInfo(bottomTriggerCount);
+      UpdateHammerDisplay(bottomTriggerCount);
+    }
   }
   else if (isPriceRange) {
-
+    if (HandleGallery()) {
+      SearchHammerByPrice(priceRangeValue);
+    }
   }
 });
 
@@ -300,7 +297,8 @@ hammerSearch.addEventListener("input", () => {
     isFiltering = true;
     hammerSearchName.textContent = "Search : ACTIVE";
 
-    // DisableOtherFilter(0);
+    // disable other filters
+    DisableOtherFilter(0);
 
     SearchHammerByIndex(hammerSearchValue);
   }
@@ -327,9 +325,10 @@ priceSearch.addEventListener("input", () => {
     isPriceRange = true;
     priceRangeName.textContent = "Price : ACTIVE";
 
-    // DisableOtherFilter(1);
+    // disable other filters
+    DisableOtherFilter(1);
 
-    // SearchHammerByPrice(priceRangeValue);
+    SearchHammerByPrice(priceRangeValue);
   }
 
   console.log(priceRangeValue);
@@ -341,6 +340,9 @@ resetPriceButton.addEventListener("click", () => {
 
   isPriceRange = false;
   priceRangeName.textContent = "Price : ";
+
+  //clear array
+  validNumbers.length = 0;
 
   UpdateHammerInfo(bottomTriggerCount);
   UpdateHammerDisplay(bottomTriggerCount);

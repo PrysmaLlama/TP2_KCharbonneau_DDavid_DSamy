@@ -44,9 +44,11 @@ gsap.from(".imgSimilaire", {
     scrollTrigger: {
         trigger: '#titreSimilaire',
         start: 'top center',
-        end: 'bottom center',
+        end: 'bottom bottom',
         markers: true,
         scrub: 4,   
     }  
 })
+
+
 

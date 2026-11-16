@@ -1,3 +1,5 @@
+// Page fait par David Diaz
+
 import './style.css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';

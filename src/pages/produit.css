@@ -1,3 +1,5 @@
+/* Page faite par David Diaz */
+
 .pageProduit {
     padding-top: 10%;
     background-color: blanchedalmond;
@@ -30,6 +32,8 @@
   transform: rotate(90deg);
   translate: 530% 250%;
 }
+
+/* Parametres pour l'image du produit format mobile */
 
 @media (width <=900px) {
   .imgProduit {
@@ -76,6 +80,8 @@
   background-color: rgb(82, 102, 156);
 }
 
+/* Parametres pour l'information du produit format mobile*/
+
 @media (width <=900px) {
   .infoProduit {
     flex-direction: column;
@@ -97,7 +103,7 @@
 /* Section Produits similaires */
 
 #titreSimilaire {
- padding-left: 42%;
+ text-align: center;
  font-size: 2rem;
 }
 
@@ -120,18 +126,22 @@
   padding-top: 10%;
 }
 
+/* Section Produits similaires format mobile*/
+
 @media (width <=900px) {
 
   #titreSimilaire {
     font-size: 1.5rem;
-    padding-left: 36.5%;
+    text-align: center;
   }
 
   .flexSimilaire {
     flex-direction: column;
+    justify-content: space-between;
+    row-gap: 50px;
   }
 
   .imgSimilaire {
-    width: 20%;
+    width: 25%;
   }
 }

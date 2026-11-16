@@ -26,3 +26,20 @@ body, html {
   transform: translate(-50%, -50%);
   color: rgb(255, 255, 255);
 }
+
+.hero-image {
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ham{
+  width: 200px;
+  margin-left: 10px;
+}
+
+.hamR {
+  right: 0;
+  width: 200px;
+}

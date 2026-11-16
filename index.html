@@ -34,20 +34,24 @@
 
       <section class="gallery" id="gallery">
 
-        <div class="galleryTitle"><h1 class="titleGallery">Gallery</h1></div>
+        <div class="galleryTitle"><h1 class="galleryH1">Gallery</h1></div>
+
 
         <div class="filter">
           <div class="filterHolder">
             <h2>Filter</h2>
             <div class="search">
-              <h3 class="hammerSearchName">Search : </h3>
+              <h3 class="hammerSearchName" id="hammerSearchName">Search : </h3>
               <input type="number" name="hammerSearch" class="hammerSearch" value="0">
               <button id="resetSearch">Reset</button>
             </div>
             <div class="search">
-              <h3 class="hammerSearchName">Price : </h3>
-              <input type="number" name="hammerPrice" class="hammerSearch" id="priceRange" value="0">
-              <button id="priceRange">Reset</button>
+              <h3 class="hammerSearchName" id="priceRangeName">Prix : </h3>
+              <div class="searchInputHolder">
+                <input type="number" name="hammerPrice" class="hammerSearch" id="priceRange" value="0">
+                <input type="number" name="hammerPrice" class="hammerSearch" id="priceRangeInput" value="100">
+              </div>
+              <button id="resetPriceRange">Reset</button>
             </div>
 
           </div>

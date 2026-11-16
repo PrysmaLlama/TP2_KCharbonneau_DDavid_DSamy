@@ -37,13 +37,17 @@ const scroller = document.querySelector(".scroller");
   /*Filter*/
     /*Search*/
 const hammerSearch = document.querySelector(".hammerSearch");
+const hammerSearchName = document.getElementById("hammerSearchName");
 let hammerSearchValue = 0;
 const resetSearchButton = document.getElementById("resetSearch");
 let isFiltering = false;
   /*Price*/
 const priceSearch = document.getElementById("priceRange");
+const priceSearchRange = document.getElementById("priceRangeInput");
+let priceRangeRange = 100;
+const priceRangeName = document.getElementById("priceRangeName");
 let priceRangeValue = 0;
-const resetPriceButton = document.getElementById("priceRange");
+const resetPriceButton = document.getElementById("resetPriceRange");
 let isPriceRange = false;
 
 let bottomTriggerCount = 0;
@@ -83,9 +87,15 @@ function SearchHammerByIndex(index) {
 
 let SHP_number = 1;
 let SHP_triggered = false;
+let validNumbers = [];
 function SearchHammerByPrice(priceRange) {
-  SHP_number = 1;
-  for (let i = 1; i < hammerNames.length; i++) {
+  if (validNumbers.length <= 4) {
+    SHP_number = 1;
+  } else {
+    SHP_number = validNumbers[ (validNumbers.length - (11)) ];
+  }
+
+  for (let i = 0; i < hammerNames.length; i++) {
     if (SHP_number > 40000) {
       return;
     }
@@ -93,14 +103,19 @@ function SearchHammerByPrice(priceRange) {
     SHP_triggered = false;
 
     while (SHP_triggered != true) {
+      console.log(Number(priceRange) + Number(priceRangeRange));
       const price = FindHammerByNumber(SHP_number);
 
-      if (price < (parseInt(priceRange) + 100) && price >= priceRange) {
+      if (price < ( Number(priceRange) + Number(priceRangeRange) ) && price >= priceRange) {
         hammerNames[i].textContent = `Marteau : ${SHP_number}`;
         hammerPrices[i].textContent = `Prix : ${price} $`;
         hammerButtons[i].textContent = `Ajouter au panier`;
 
+        //apparence
+        UpdateHammerDisplayByIndex(i, SHP_number);
+
         SHP_triggered = true;
+        validNumbers.push(SHP_number);
       }
       SHP_number++;
       
@@ -133,6 +148,37 @@ function UpdateHammerInfo(count) {
   }
 }
 
+function UpdateHammerDisplayByIndex(elemIndex, index) {
+  let ei = elemIndex;
+  let i = index;
+    let [tr, tg, tb] = window.getComputedStyle(tops[ei]).backgroundColor.match(/\d+/g).map(Number);
+    let [mr, mg, mb] = window.getComputedStyle(middles[ei]).backgroundColor.match(/\d+/g).map(Number);
+    let [br, bg, bb] = window.getComputedStyle(bottoms[ei]).backgroundColor.match(/\d+/g).map(Number);
+
+    /*Top*/
+    let tRandNum = generator.GetRandom(hammersPerRow + i + 1) % 255;
+    tr = (tr + tRandNum) > 255 ? (tr + tRandNum) - 255 : (tr + tRandNum);
+    tg = (tg + tRandNum * 1.25) > 255 ? (tg + tRandNum * 2) - 255 : (tg + tRandNum * 1.25);
+    tb = (tb + tRandNum * 2) > 255 ? (tb + tRandNum * 1.25) - 255 : (tb + tRandNum * 2);
+
+    tops[ei].style.backgroundColor = `rgb(${tr / 2}, ${tg / 4}, ${tb / 2})`
+
+    /*Middle*/
+    let mRandNum = generator.GetRandom(hammersPerRow + i + 1) % 255;
+    mr = (mr + mRandNum) > 255 ? (mr + mRandNum) - 255 : (mr + mRandNum);
+    mg = (mg + mRandNum * 5) > 255 ? (mg + mRandNum * 4) - 255 : (mg + mRandNum * 5);
+    mb = (mb + mRandNum * 4) > 255 ? (mb + mRandNum * 5) - 255 : (mb + mRandNum * 4);
+
+    middles[ei].style.backgroundColor = `rgb(${mr / 2}, ${mg / 4}, ${mb / 2})`
+
+    /*Bottom*/
+    let bRandNum = generator.GetRandom(hammersPerRow + i + 1) % 255;
+    br = (br + bRandNum) > 255 ? (br + bRandNum) - 255 : (br + bRandNum);
+    bg = (bg + bRandNum * 3) > 255 ? (bg + bRandNum * 6) - 255 : (bg + bRandNum * 3);
+    bb = (bb + bRandNum * 6) > 255 ? (bb + bRandNum * 3) - 255 : (bb + bRandNum * 6);
+
+    bottoms[ei].style.backgroundColor = `rgb(${br / 2}, ${bg / 4}, ${bb / 2})`
+}
 function UpdateHammerDisplay(count) {
   for (let i = 0; i < hammerNames.length; i++) {
     let [tr, tg, tb] = window.getComputedStyle(tops[i]).backgroundColor.match(/\d+/g).map(Number);
@@ -163,8 +209,17 @@ function UpdateHammerDisplay(count) {
 
     bottoms[i].style.backgroundColor = `rgb(${br / 2}, ${bg / 4}, ${bb / 2})`
 
-    console.log(`tRandNum : ${generator.GetRandom(count * 16 + i + 1)}, mRandNum : ${mRandNum}, bRandNum : ${bRandNum}`);
-    console.log(`TOP - r : ${tr}, mg : ${tr}, b : ${tr} | MIDDLE - r : ${mr}, g : ${mr}, b : ${mr} | BOTTOM - r : ${br}, g : ${br}, b : ${br}`);
+    // console.log(`tRandNum : ${generator.GetRandom(count * 16 + i + 1)}, mRandNum : ${mRandNum}, bRandNum : ${bRandNum}`);
+    // console.log(`TOP - r : ${tr}, mg : ${tr}, b : ${tr} | MIDDLE - r : ${mr}, g : ${mr}, b : ${mr} | BOTTOM - r : ${br}, g : ${br}, b : ${br}`);
+  }
+}
+
+function DisableOtherFilter(index) {
+  if (index == 0) {
+    resetPriceButton.click();
+  } 
+  else if (index == 1) {
+    resetSearchButton.click();
   }
 }
 
@@ -190,10 +245,13 @@ let totalOffset = (b) => {
   /*(b == true ? bottomTriggerCount : 1)*/
   return (elemHeight + rowGap) * b;
 };
+
+let topOffset = 150;
+let bottomOffset = 250;
 //set trigger pos using gallery elems height + gallery gap + galleryTitles height;
-topTrigger.style.top = `${totalOffset(1) + parseFloat(window.getComputedStyle(gallery).rowGap) + galleryTitle.offsetHeight}px`;
+topTrigger.style.top = `${topOffset + totalOffset(1) + parseFloat(window.getComputedStyle(gallery).rowGap) + galleryTitle.offsetHeight}px`;
 //set trigger pos using gallery elems height;
-bottomTrigger.style.bottom = `${150 + totalOffset(1)}px`;
+bottomTrigger.style.bottom = `${bottomOffset + totalOffset(1)}px`;
 
 
 /*Gallery Functions*/
@@ -222,7 +280,7 @@ function HandleGallery() {
     bottomTriggerCount++;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
 
-    console.log(`BOTTOM - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
+    //console.log(`BOTTOM - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
 
     return true;
   }
@@ -230,7 +288,7 @@ function HandleGallery() {
     bottomTriggerCount--;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
 
-    console.log(`TOP - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
+    //console.log(`TOP - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
 
     return true;
   }
@@ -253,10 +311,18 @@ const Timer = setInterval(() => {
   eventTimer += delta;
 }, eventTimerInt);
 
+  /*Scroll*/
 window.addEventListener("scroll", () => {
-  if (!isFiltering && HandleGallery()) {
-    UpdateHammerInfo(bottomTriggerCount);
-    UpdateHammerDisplay(bottomTriggerCount);
+  if (!isFiltering && !isPriceRange) {
+    if (HandleGallery()) {
+      UpdateHammerInfo(bottomTriggerCount);
+      UpdateHammerDisplay(bottomTriggerCount);
+    }
+  }
+  else if (isPriceRange) {
+    if (HandleGallery()) {
+      SearchHammerByPrice(priceRangeValue);
+    }
   }
 });
 
@@ -269,6 +335,10 @@ hammerSearch.addEventListener("input", () => {
     ShowAllHammers();
   } else {
     isFiltering = true;
+    hammerSearchName.textContent = "Search : ACTIVE";
+
+    // disable other filters
+    DisableOtherFilter(0);
 
     SearchHammerByIndex(hammerSearchValue);
   }
@@ -280,6 +350,7 @@ resetSearchButton.addEventListener("click", () => {
   hammerSearch.value = 0;
   hammerSearchValue = 0;
 
+  hammerSearchName.textContent = "Search : ";
   isFiltering = false;
   ShowAllHammers();
 });
@@ -292,11 +363,25 @@ priceSearch.addEventListener("input", () => {
     ShowAllHammers();
   } else {
     isPriceRange = true;
+    priceRangeName.textContent = "Price : ACTIVE";
+
+    // disable other filters
+    DisableOtherFilter(1);
 
     SearchHammerByPrice(priceRangeValue);
   }
 
   console.log(priceRangeValue);
+});
+priceSearchRange.addEventListener("input", () => {
+  if (priceSearchRange.value < 50) {
+    priceRangeRange = 50;
+  } else {
+    priceRangeRange = priceSearchRange.value;
+  }
+  //clear array
+  validNumbers.length = 0;
+  console.log(priceRangeRange);
 });
 
 resetPriceButton.addEventListener("click", () => {
@@ -304,5 +389,15 @@ resetPriceButton.addEventListener("click", () => {
   priceRangeValue = 0;
 
   isPriceRange = false;
+  priceRangeName.textContent = "Price : ";
+
+  //clear array
+  validNumbers.length = 0;
+
+  UpdateHammerInfo(bottomTriggerCount);
+  UpdateHammerDisplay(bottomTriggerCount);
+
   ShowAllHammers();
 });
+
+

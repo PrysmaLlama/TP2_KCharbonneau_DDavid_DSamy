@@ -49,6 +49,11 @@
     background-color: rgb(11, 109, 109);
 }
 
+.searchInputHolder {
+    display: flex;
+    gap: 5px;
+}
+
 .galleryContainer {
     width: 100%;
     padding-top: 5%;

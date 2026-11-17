@@ -1,0 +1,72 @@
+
+
+.boom {
+
+    
+    background-color: rgb(146, 128, 101);
+
+    height: 100px;
+
+    z-index: 100;
+}
+
+
+.logobig {
+    max-width: 20%;
+            
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    object-fit: cover;
+                   margin-top:200px;    
+    padding: 10px;
+margin-left: 25%;
+background-color: black;
+  
+}
+
+img {
+    
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+
+}
+
+li {
+    margin: 20px;
+}
+
+body {
+    min-height: 100vh;
+
+    font-size: 1rem;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+main {
+    padding-top: 100px;
+    
+    background-color: blanchedalmond;
+
+    display: flex;
+    justify-content: center;
+}
+
+.trending {
+    width: 280px;
+    padding: 15px;
+    margin: 30px auto;
+    background: rgb(75, 72, 72);
+    text-align: center;
+}
+
+.trending img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+}

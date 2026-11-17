@@ -1,3 +1,5 @@
+//KAITO
+
 import './style.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -282,7 +284,7 @@ function HandleGallery() {
   else if (CompareTopTrigger() && bottomTriggerCount != 0) { //Regardere Top Trigger
     bottomTriggerCount--;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
-    
+
     return true;
   }
   return false;
@@ -330,7 +332,7 @@ hammerSearch.addEventListener("input", () => {
     isFiltering = true;
     hammerSearchName.textContent = "Search : ACTIVE";
 
-    // disable other filters
+    // enlever autre filtres
     DisableOtherFilter(0);
 
     SearchHammerByIndex(hammerSearchValue);
@@ -348,7 +350,7 @@ resetSearchButton.addEventListener("click", () => {
   ShowAllHammers();
 });
 
-  /*Price*/
+  /*Prix*/
 priceSearch.addEventListener("input", () => {
   priceRangeValue = priceSearch.value;
 
@@ -358,7 +360,7 @@ priceSearch.addEventListener("input", () => {
     isPriceRange = true;
     priceRangeName.textContent = "Price : ACTIVE";
 
-    // disable other filters
+    // enlever autre filtres
     DisableOtherFilter(1);
 
     SearchHammerByPrice(priceRangeValue);

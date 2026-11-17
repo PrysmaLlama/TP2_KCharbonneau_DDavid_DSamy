@@ -1,8 +1,25 @@
+// Page entière fait par David Diaz
+
 import './style.css';
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Constantes pour l'image du produit
+
+const imgProduit = document.getElementById('imgProduit');
+const boutonChanger = document.getElementById('changerImage');
+
+// Constantes pour l'information du produit
+
+const nomProduit = document.querySelector('nomProduit');
+const noteProduit= document.querySelector('noteProduit');
+const prixProduit = document.querySelector('prixProduit');
+const descriptionProduit = document.getElementById('descriptionProduit');
+
+
+// Constantes pour les produits similaires
 
 const titreSimilaire = document.getElementById("#titreSimilaire");
 const imgSimilaire = document.querySelector(".imgSimilaire");
@@ -10,21 +27,53 @@ const imgSimilaire = document.querySelector(".imgSimilaire");
 
 // Alterner images du produit
 
-const imgProduit = document.getElementById('imgProduit');
-const boutonChanger = document.getElementById('changerImage');
 
 let imageActuelle = 1;
 
 boutonChanger.addEventListener('click', function() {
 
     if(imageActuelle === 1) {
-        imgProduit.src = "src/assets/javascript.svg";
+        imgProduit.src = "./public/skullHammer2.png";
         imageActuelle = 2;
     } else {
-        imgProduit.src = "src/assets/hero.png";
+        imgProduit.src = "./public/skullHammer.png";
         imageActuelle = 1;
     }
 });
+
+
+
+// Petite Animation de l'image du produit
+
+gsap.from('#imgProduit', {
+    opacity: 0,
+    duration: 1,
+})
+
+// Animation des informations du produit
+
+const timeline = gsap.timeline();
+
+timeline.from('.nomProduit', {
+    opacity: 0,
+    duration: 0.5,
+});
+
+timeline.from('.noteProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
+
+timeline.from('.prixProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
+
+timeline.from('#descriptionProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
+
 
 
 // Animation des produits similaires

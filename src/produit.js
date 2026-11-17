@@ -14,6 +14,9 @@ const boutonChanger = document.getElementById('changerImage');
 // Constantes pour l'information du produit
 
 const nomProduit = document.querySelector('nomProduit');
+const noteProduit= document.querySelector('noteProduit');
+const prixProduit = document.querySelector('prixProduit');
+const descriptionProduit = document.getElementById('descriptionProduit');
 
 
 // Constantes pour les produits similaires
@@ -38,6 +41,8 @@ boutonChanger.addEventListener('click', function() {
     }
 });
 
+
+
 // Petite Animation de l'image du produit
 
 gsap.from('#imgProduit', {
@@ -47,6 +52,27 @@ gsap.from('#imgProduit', {
 
 // Animation des informations du produit
 
+const timeline = gsap.timeline();
+
+timeline.from('.nomProduit', {
+    opacity: 0,
+    duration: 0.5,
+});
+
+timeline.from('.noteProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
+
+timeline.from('.prixProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
+
+timeline.from('#descriptionProduit', {
+    opacity: 0,
+    duration: 0.2,
+});
 
 
 

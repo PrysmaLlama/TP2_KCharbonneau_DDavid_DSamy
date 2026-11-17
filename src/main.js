@@ -1,3 +1,5 @@
+//KAITO
+
 import './style.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -77,9 +79,9 @@ function SearchHammerByIndex(index) {
   hammerPrices[0].textContent = `Prix : ${Math.round(generator.GetRandom(intIndex) / ((intIndex % 16) + 1))} $`;
   hammerButtons[0].textContent = `Ajouter au panier`;
 
-  /*Update appearence*/
+  /*Modifier appearence*/
 
-  /*Hide other hammers*/
+  /*Cacher autre marteaux*/
   for (let i = 1; i < hammerNames.length; i++) {
     hammerElems[i].style.display = "none";
   }
@@ -209,8 +211,6 @@ function UpdateHammerDisplay(count) {
 
     bottoms[i].style.backgroundColor = `rgb(${br / 2}, ${bg / 4}, ${bb / 2})`
 
-    // console.log(`tRandNum : ${generator.GetRandom(count * 16 + i + 1)}, mRandNum : ${mRandNum}, bRandNum : ${bRandNum}`);
-    // console.log(`TOP - r : ${tr}, mg : ${tr}, b : ${tr} | MIDDLE - r : ${mr}, g : ${mr}, b : ${mr} | BOTTOM - r : ${br}, g : ${br}, b : ${br}`);
   }
 }
 
@@ -231,7 +231,7 @@ UpdateHammerDisplay(bottomTriggerCount);
 
 /*Setups*/
 
-  /*need to refresh these*/
+  /*besoin de rafraichir*/
 let topTriggerPos = () => topTrigger.getBoundingClientRect().bottom;
 let bottomTriggerPos = () => bottomTrigger.getBoundingClientRect().bottom;
 let scrollerPos = () => scroller.getBoundingClientRect().bottom;
@@ -242,33 +242,32 @@ let totalOffset = (b) => {
   const computedStyles = window.getComputedStyle(galleryContainer);
   const rowGap = parseFloat(computedStyles.rowGap) || 0;
 
-  /*(b == true ? bottomTriggerCount : 1)*/
   return (elemHeight + rowGap) * b;
 };
 
 let topOffset = 150;
 let bottomOffset = 250;
-//set trigger pos using gallery elems height + gallery gap + galleryTitles height;
+//mettre trigger position en utilisant gallery elems height + gallery gap + galleryTitles height;
 topTrigger.style.top = `${topOffset + totalOffset(1) + parseFloat(window.getComputedStyle(gallery).rowGap) + galleryTitle.offsetHeight}px`;
-//set trigger pos using gallery elems height;
+//mettre trigger position en utilisant gallery elems height;
 bottomTrigger.style.bottom = `${bottomOffset + totalOffset(1)}px`;
 
 
-/*Gallery Functions*/
+/*Gallery Fonctions*/
 
 function printInfo() {
   console.log(`Top: ${topTriggerPos()}, Bottom ${bottomTriggerPos()}, Scroller: ${scrollerPos()}`);
 };
 
 function CompareTopTrigger() {
-  /*if scroller above top -> gallery should move up*/
+  /*si scroller est au dessus de top -> gallery devrait allez en haut*/
   if (topTriggerPos() - scrollerPos() > 0) {
     return true;
   }
   return false;
 };
 function CompareBottomTrigger() {
-  /*if scroller below bottom -> gallery should move down*/
+  /*si scroller est en dessous de bottom -> gallery devrait allez en bas*/
   if (bottomTriggerPos() - scrollerPos() < 0) {
     return true; 
   }
@@ -276,19 +275,15 @@ function CompareBottomTrigger() {
 };
 
 function HandleGallery() {
-  if (CompareBottomTrigger() && !(highestCurrentIndex >= 40000)) { //Check Bottom Trigger
+  if (CompareBottomTrigger() && !(highestCurrentIndex >= 40000)) { //Regarder Bottom Trigger
     bottomTriggerCount++;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
 
-    //console.log(`BOTTOM - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
-
     return true;
   }
-  else if (CompareTopTrigger() && bottomTriggerCount != 0) { //Check Top Trigger
+  else if (CompareTopTrigger() && bottomTriggerCount != 0) { //Regardere Top Trigger
     bottomTriggerCount--;
     gallery.style.marginTop = `${totalOffset(bottomTriggerCount)}px`;
-
-    //console.log(`TOP - MarginTop: ${gallery.style.marginTop}, Offset: ${totalOffset(bottomTriggerCount)}, BottomCount: ${bottomTriggerCount}`);
 
     return true;
   }
@@ -337,7 +332,7 @@ hammerSearch.addEventListener("input", () => {
     isFiltering = true;
     hammerSearchName.textContent = "Search : ACTIVE";
 
-    // disable other filters
+    // enlever autre filtres
     DisableOtherFilter(0);
 
     SearchHammerByIndex(hammerSearchValue);
@@ -355,7 +350,7 @@ resetSearchButton.addEventListener("click", () => {
   ShowAllHammers();
 });
 
-  /*Price*/
+  /*Prix*/
 priceSearch.addEventListener("input", () => {
   priceRangeValue = priceSearch.value;
 
@@ -365,7 +360,7 @@ priceSearch.addEventListener("input", () => {
     isPriceRange = true;
     priceRangeName.textContent = "Price : ACTIVE";
 
-    // disable other filters
+    // enlever autre filtres
     DisableOtherFilter(1);
 
     SearchHammerByPrice(priceRangeValue);

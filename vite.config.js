@@ -7,7 +7,7 @@ export default defineConfig({
             input: {
                 main: 'index.html',
                 produit: 'produit.html',
-                SamyPage: 'PAgeAcceuil.html',
+                SamyPage: 'Gallery.html',
             },
         },
     },

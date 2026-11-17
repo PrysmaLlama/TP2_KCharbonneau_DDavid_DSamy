@@ -1,22 +1,22 @@
-@import url("../src/header.css");
-@import url("../src/reset.css");
-
-
 /* Base */
-
+ 
 @import url("../src/base/reset.css");
-
-
+ 
+ 
 /* Components */
-
-
+ 
+ 
 /* Layouts */
-
+ 
 @import url("../src/layouts/header.css");
 @import url("../src/layouts/footer.css");
-
-
+ 
+ 
 /* Pages */
-
+ 
 @import url("../src/pages/PageGallery.css");
+@import url("../src/pages/hammerGallery.css");
 @import url("../src/pages/produit.css");
+@import url("../src/pages/hero.css");
+@import url("../src/pages/PageAcceuil.css");
+ 

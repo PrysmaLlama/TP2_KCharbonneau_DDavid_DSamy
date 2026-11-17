@@ -13,8 +13,16 @@ gsap.to(".ham", {
     yoyo: true,
 })
 
-gsap.to(".hamR", {
-    rotation: 1,
+gsap.fromTo(".hamR",
+    {
+        scaleX: -1,
+        scaleY: 1,
+        rotation: 0,
+    },
+    {
+    rotation: 45,
+    scaleX: -1,
+    scaleY: 1,
     duration: 1,
     repeat: -1,
     yoyo: true,

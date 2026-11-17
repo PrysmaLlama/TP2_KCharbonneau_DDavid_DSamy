@@ -1,7 +1,3 @@
-@import url("../src/header.css");
-@import url("../src/reset.css");
-
-
 /* Base */
 
 @import url("../src/base/reset.css");
@@ -19,4 +15,5 @@
 /* Pages */
 
 @import url("../src/pages/PageGallery.css");
+@import url("../src/pages/hammerGallery.css");
 @import url("../src/pages/produit.css");

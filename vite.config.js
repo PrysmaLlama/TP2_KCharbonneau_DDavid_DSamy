@@ -7,7 +7,7 @@ export default defineConfig({
             input: {
                 main: 'index.html',
                 produit: 'produit.html',
-                gallery: 'Gallery.html',
+                galerie: 'Gallery.html',
             },
         },
     },

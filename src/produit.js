@@ -94,7 +94,6 @@ gsap.from(".imgSimilaire", {
         trigger: '#titreSimilaire',
         start: 'top center',
         end: 'bottom bottom',
-        markers: true,
         scrub: 4,   
     }  
 })

@@ -5,6 +5,8 @@
  
 /* Components */
  
+@import url("../src/components/hero.css");
+@import url("../src/components/hammerGallery.css");
  
 /* Layouts */
  
@@ -15,8 +17,6 @@
 /* Pages */
  
 @import url("../src/pages/PageGallery.css");
-@import url("../src/pages/hammerGallery.css");
 @import url("../src/pages/produit.css");
-@import url("../src/pages/hero.css");
 @import url("../src/pages/PageAcceuil.css");
  

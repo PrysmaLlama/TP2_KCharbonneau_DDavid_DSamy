@@ -1,0 +1,370 @@
+<!--KAITO-->
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="/src/main.js" defer></script>
+
+    <title>gsap-class</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <header>
+      <div class="logo"><a href="index.html"><img src="./Hammer.jpg" alt="hammer logo"></a></div>
+
+      <nav>
+        <ul>
+            <a href="index.html"><li class="Help">Acceuil</li></a>
+            <a href="Gallery.html"><li class="Discover">Découvrir</li></a>
+            <a href="produit.html"> <li class="Shop">Boutique</li></a>
+        </ul>
+      </nav>
+
+      <div class="GeneralLookup"></div>
+
+    </header>
+
+    <div class="thing"></div>
+
+    <main class="pageGallery">
+
+      <div class="scroller"></div>
+
+      <section class="gallery" id="gallery">
+
+        <div class="galleryTitle"><h1 class="galleryH1">Galerie</h1></div>
+
+
+        <div class="filter">
+          <div class="filterHolder">
+            <h2>Filtre</h2>
+            <div class="search">
+              <h3 class="hammerSearchName" id="hammerSearchName">Search : </h3>
+              <input type="number" name="hammerSearch" class="hammerSearch" value="0">
+              <button id="resetSearch">Réinitialiser</button>
+            </div>
+            <div class="search">
+              <h3 class="hammerSearchName" id="priceRangeName">Prix : </h3>
+              <div class="searchInputHolder">
+                <input type="number" name="hammerPrice" class="hammerSearch" id="priceRange" value="0">
+                <input type="number" name="hammerPrice" class="hammerSearch" id="priceRangeInput" value="100">
+              </div>
+              <button id="resetPriceRange">Réinitialiser</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="galleryTopTrigger" id="galleryTopTrigger"></div>
+
+        <div class="galleryContainer" id="galleryContainer">
+
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+          <div class="hammerElem">
+            <div class="displayContainer">
+              <div class="displayHolder">
+                <div class="top"></div>
+                <div class="middle"></div>
+                <div class="bottom"></div>
+              </div>
+            </div>
+
+            <div class="descriptionContainer">
+              <div class="leftSide">
+                <h2 class="hammerName"></h2>
+                <p class="hammerPrice"></p>
+              </div>
+              <div class="hammerButton"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="galleryBottomTrigger" id="galleryBottomTrigger"></div>
+
+      </section>
+
+      
+    </main>
+
+     <footer class="footer">
+      <p>Tous droits réservés - 2026</p>
+    </footer>
+     
+
+  </body>
+</html>
